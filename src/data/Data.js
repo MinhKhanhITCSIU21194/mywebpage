@@ -3,7 +3,7 @@
 
 export const PRODUCTS = [
     {
-        ProductID: 1 ,
+        ProductID:'1' ,
         Name: "Casio CDP-S160 BK",
         CategoryID: 1,
         Price: 499.99,
@@ -11,7 +11,7 @@ export const PRODUCTS = [
         Description: "The CDP-S160 delivers natural sound quality and feel with a scaled hammer action keyboard, built-in speakers, and more.",
     },
     {
-        ProductID: 2 ,
+        ProductID: '2' ,
         Name: "Casio AP-550",
         CategoryID: 1,
         Price: 599.99,
@@ -19,7 +19,7 @@ export const PRODUCTS = [
         Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
     },
     {
-        ProductID: 3 ,
+        ProductID: '3' ,
         Name: "Roland-RP30",
         Category: 1,
         Price: 999.99,
@@ -27,15 +27,15 @@ export const PRODUCTS = [
         Description: "The Roland-rp30 is a great piano for experienced players. It has a full 88-key keyboard, built-in speakers, and more. ",
     },
     {
-        ProductID: 4 ,
+        ProductID: '4' ,
         Name: "Piano-grand-kawai-gl20",
-        Category: 1,
+        Category: '1',
         Price: 5300,
         img: "Assets/Piano/dan-piano-grand-kawai-gl20.jpg",
         Description: "The Piano-grand-kawai-gl20 is a great piano for experienced players. It has a full 88-key keyboard, built-in speakers, and more. ",
     },
     {
-        ProductID: 5 ,
+        ProductID: '5' ,
         Name: "K-300_EP_styling",
         Category: 1,
         Price: 1200,
@@ -43,7 +43,7 @@ export const PRODUCTS = [
         Description: "The Piano-grand-kawai-gl20 is a great piano for experienced players. It has a full 88-key keyboard, built-in speakers, and more. ",
     },
     {
-        ProductID: 6 ,
+        ProductID: '6' ,
         Name: "Piano grand Kawai-gl20",
         Category: 1,
         Price: 5300,
@@ -51,7 +51,7 @@ export const PRODUCTS = [
         Description: "The Piano-grand-kawai-gl20 is a great piano for experienced players. It has a full 88-key keyboard, built-in speakers, and more. ",
     },
     {
-        ProductID: 7 ,
+        ProductID: '7' ,
         Name: "Piano Samick JS121MD-MAHP",
         Category: 1,
         Price: 5300,
@@ -59,13 +59,110 @@ export const PRODUCTS = [
         Description: "The Piano-grand-kawai-gl20 is a great piano for experienced players. It has a full 88-key keyboard, built-in speakers, and more. ",
     },
     {
-        ProductID: 8 ,
+        ProductID: '8' ,
         Name: "Piano-grand-kawai-gl20",
         Category: 1,
         Price: 5300,
         img: "Assets/Piano/Piano Grand-Kawai-gl20.jpg",
         Description: "The Piano-grand-kawai-gl20 is a great piano for experienced players. It has a full 88-key keyboard, built-in speakers, and more. ",
     },
+    {
+        ProductID: '9' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '10' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '11' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '12' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '13' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '14' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '15' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '16' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '17' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '18' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '19' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+    {
+        ProductID: '20' ,
+        Name: "Casio AP-550",
+        CategoryID: 1,
+        Price: 599.99,
+        img: "Assets/Piano/dan-casio-AP-550.jpg",
+        Description: "The AP-550 is a great piano for beginners and experienced players alike. It has a full 88-key keyboard, built-in speakers, and more.",
+    },
+
     
 ]
 export const USERS = [
@@ -204,6 +301,7 @@ export const Educourse = [
         Description:'Kawai Music School is a music school that offers a wide range of music courses for students of all ages and levels',
         Description1:'Kawai Music School is a music school that offers a wide range of music courses for students of all ages and levels. Our courses are designed to help students develop their musical skills and knowledge in a fun and supportive environment. Whether you are a beginner or an experienced musician, we have a course that is right for you. Our experienced teachers are dedicated to helping you achieve your musical goals and will provide you with the guidance and support you need to succeed. We offer a variety of courses, including piano, guitar, violin, and voice lessons. Our classes are small and personalized, so you will receive individual attention and feedback from your teacher. We also offer group classes and ensembles, so you can learn to play with others and develop your musical skills in a social setting. At Kawai Music School, we believe that music is for everyone, and we are committed to helping you discover the joy of making music.',
     },
+
     
     
 
