@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, TextField, Button, Container, Link, Box } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom'; 
 import Header from '../Components/Header';
 
 function CreateAccount() {
@@ -154,6 +155,8 @@ function CreateAccount() {
               type="submit"
               fullWidth
               variant="contained"
+              component={RouterLink} 
+              to="/login" 
               sx={{
                 backgroundColor: '#333',
                 color: '#fff',
