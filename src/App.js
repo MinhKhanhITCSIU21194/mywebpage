@@ -6,6 +6,7 @@ import { Routes, Route} from 'react-router-dom';
 import IntroductionComponent from './components/Pages/Introduction';
 import Education from './components/Pages/Education';
 import EducourseBody from './components/Pages/EducourseBody';
+import Login from './components/Pages/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/education3" element={<EducourseBody ID='3' />}/>
       <Route path="/education4" element={<EducourseBody ID='4' />}/>
       <Route path="/education5" element={<EducourseBody ID='5' />}/>
+      <Route path="/Login" element={<Login/>}/>
       
     </Routes>
 
