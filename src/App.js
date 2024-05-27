@@ -1,4 +1,3 @@
-
 import './App.css';
 import ProdBody from './components/Pages/ProdBody';
 import Homepage from './components/Pages/Homepage';
@@ -9,6 +8,8 @@ import EducourseBody from './components/Pages/EducourseBody';
 import Contact from './components/Pages/Contact';
 import SingleProduct from './components/Pages/SingleProduct';
 import Cart from './components/Pages/Cart';
+import Login from "./components/Pages/Login";
+import CreateAccount from "./components/Pages/CreateAccount"
 function App() {
   return (
 <div>
@@ -25,15 +26,16 @@ function App() {
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path="/products/:id" element={<SingleProduct />}/>
+      <Route path="/login" element={<Login/>}/> 
+        <Route path="/create-account" element={<CreateAccount/>}/>
 
       
     </Routes>
 
    </div>  
-  
+  )
      
+  }
 
-  );
-}
 
 export default App;
