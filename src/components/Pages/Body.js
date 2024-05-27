@@ -22,7 +22,7 @@ function Body() {
       <div>
       <Typography sx={{
         left: '15%', // Add this line
-        fontSize:'45px',
+        fontSize:'40px',
         position:'relative',
         width:'75%',
         letterSpacing: '.5rem',
@@ -30,7 +30,7 @@ function Body() {
         marginBottom:'30px',
         fontFamily:'Playfair Display'
     }}>
-      <br></br>Piano City
+      <br></br>Welcome to <span style={{fontFamily:'Dancing Script', fontWeight:'800', fontSize:'55px'}}>PianoCity</span>  
     </Typography>
     <Typography sx={{
       position:'relative',

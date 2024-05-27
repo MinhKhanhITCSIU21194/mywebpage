@@ -6,7 +6,9 @@ import { Routes, Route} from 'react-router-dom';
 import IntroductionComponent from './components/Pages/Introduction';
 import Education from './components/Pages/Education';
 import EducourseBody from './components/Pages/EducourseBody';
-
+import Contact from './components/Pages/Contact';
+import SingleProduct from './components/Pages/SingleProduct';
+import Cart from './components/Pages/Cart';
 function App() {
   return (
 <div>
@@ -20,6 +22,10 @@ function App() {
       <Route path="/education3" element={<EducourseBody ID='3' />}/>
       <Route path="/education4" element={<EducourseBody ID='4' />}/>
       <Route path="/education5" element={<EducourseBody ID='5' />}/>
+      <Route path='/contact' element={<Contact/>}/>
+      <Route path='/cart' element={<Cart/>}/>
+      <Route path="/products/:id" element={<SingleProduct />}/>
+
       
     </Routes>
 

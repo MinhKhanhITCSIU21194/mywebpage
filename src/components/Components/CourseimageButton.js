@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 
 function CourseimageButton() {
   return (
-    <div class="Educourse" style={{display: 'flex', flexWrap: 'wrap', width:'100%', marginLeft:'5p%'}} > 
+    <div class="Educourse"  style={{justifyContent:'space-between',display:'flex', flexWrap:'wrap' , width:'100%', marginLeft:'5p%'}} > 
         {Educourse.map((course) => (
-            <span class="item" style={{width:'30%', height:'50%',margin:'10px'}}>
+            <span class="item" style={{width:'30%', height:'30%',margin:'10px'}}>
                 <Button 
                 component={Link}
                 to={`/education${course.CourseID}`}

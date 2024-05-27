@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
-import {PRODUCTS} from '../../data/Data'
 
+import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import Section from '../Components/Section';
 import Lowbar from '../Components/Lowbar';
@@ -18,7 +18,11 @@ const [products, setProducts] = useState([]);
       <div class="products" style={{display: 'flex', flexWrap: 'wrap', width:'100%', marginLeft:'5p%'}} > 
         {products.map((product) => (
             <span class="item" style={{width:'31%', margin:'10px'}}>
-                <Button><img src={product.img} alt="Product" className="ProductImage" style={{width:'100%'}} /></Button>
+                <Button
+                component={Link}
+                to={`/products/${product.ProductID}`}
+                
+                ><img src={product.img} alt="Product" className="ProductImage" style={{width:'100%'}} /></Button>
                 <div class="item-info" style={{textAlign:'center'}}>
                     <h2>{product.Name}</h2>
                     <h3>${product.Price}</h3>
