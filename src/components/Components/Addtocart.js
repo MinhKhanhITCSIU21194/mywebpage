@@ -1,13 +1,20 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import { NavLink } from 'react-router-dom'
-function Addtocart() {
-  return (
+import { useSelector, useDispatch } from 'react-redux'
+import {AddProd, DeleteProd} from '../../Redux/slice/cartslice'
 
-      
+function Addtocart({item1}) {
+  
+  const dispatch = useDispatch()
+  const CartProducts = useSelector(state => state.cart.CartArr)
+  console.log(CartProducts)
+  
+
+  return (
     <div>
-        <NavLink>
       <Button 
+      onClick={() => dispatch(AddProd(item1))}
       sx=
     
       {{
@@ -22,8 +29,9 @@ function Addtocart() {
             border: 'none', 
           }
       }} >Add to cart</Button>
-      </NavLink>
+
       </div>
+      
       
 
   )

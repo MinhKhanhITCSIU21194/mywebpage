@@ -6,6 +6,7 @@ import Header from '../Components/Header';
 import Section from '../Components/Section';
 import Lowbar from '../Components/Lowbar';
 import AppPagination from '../Components/PaginationButton';
+import Addtocart from '../Components/Addtocart';
 
 
 function ProdBody() {
@@ -26,6 +27,7 @@ const [products, setProducts] = useState([]);
                 <div class="item-info" style={{textAlign:'center'}}>
                     <h2>{product.Name}</h2>
                     <h3>${product.Price}</h3>
+                    <Addtocart item1={product}/>
                 </div>
             </span>
         ))}

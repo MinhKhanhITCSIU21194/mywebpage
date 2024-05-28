@@ -10,7 +10,7 @@ import Addtocart from '../Components/Addtocart'
 
 function SingleProduct() {
     const {id} = useParams();
-    const prod = PRODUCTS[id-1]
+    const prod = PRODUCTS.find(item => item.ProductID === Number(id));
   return (
     <div>
       <Header/>
@@ -24,7 +24,7 @@ function SingleProduct() {
             <Container  allignContent={'center'}  sx={{width:'60%',justifyContent:'center', display:'flex',alignItems:'center',flexDirection:'column'}}>  
             <Typography sx={{fontFamily:'Playfair Display', fontWeight:'700', fontSize:'40px'}}>{prod.Name}</Typography>
               <Typography sx={{margin:'5%',fontSize:'40px'}}>{prod.Price}$</Typography>
-              <Addtocart/>
+              <Addtocart item1={prod}/>
             </Container>
           </div>
         

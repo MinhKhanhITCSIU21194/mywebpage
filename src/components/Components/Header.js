@@ -23,7 +23,6 @@ function Header() {
         <Toolbar disableGutters >
           <Typography>
           <Button
-            noWrap
             component={Link}
             to={'/'}
             sx={{
