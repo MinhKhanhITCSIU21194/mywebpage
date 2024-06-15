@@ -10,7 +10,7 @@ import Addtocart from '../Components/Addtocart'
 
 function SingleProduct() {
     const {id} = useParams();
-    const prod = PRODUCTS.find(item => item.ProductID === Number(id));
+    const prod = PRODUCTS.find(item => item.id === Number(id));
   return (
     <div>
       <Header/>
