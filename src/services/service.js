@@ -1,5 +1,4 @@
-import { PRODUCTS } from "../../../data/Data"
-import filteredProductsLater from "../../Pages/ProdBody"
+import { PRODUCTS } from "../data/Data";
 
 const service = {
     getData: ({from, to}) => {

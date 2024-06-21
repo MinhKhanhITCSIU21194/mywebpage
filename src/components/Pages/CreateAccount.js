@@ -1,9 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, TextField, Button, Container, Link, Box } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom'; 
+
 import Header from '../Components/Header';
 
+const InitialFormValue = {
+  name:"",
+  email:"",
+  username:"",
+  password:"",
+  confirmPassword:"",
+  address:"",
+  phoneNumber:"",
+  dob:"",
+
+
+}
+
+const ErrorValue= (value) => {
+  return value.trim().length < 8
+}
+
+
+
 function CreateAccount() {
+  const [formValue, setformValue] = useState(InitialFormValue);
+  const [formerror, setformError] = useState({});
+
+  const ErrorConfPass = (value) => {
+    return value !== formValue.password 
+  }
+  const validateForm = () => {
+      const error = {};
+      if (ErrorValue(formValue.username)){
+        error["username"] = "Username should have 8 characters"
+      }
+      if (ErrorValue(formValue.email)){
+        error["email"] = "Email should have 8 characters"
+      }
+      if (ErrorValue(formValue.address)){
+        error["address"] = "address should have 8 characters"
+      }
+      if (ErrorValue(formValue.password)){
+        error["password"] = "password should have 8 characters"
+      }
+      if (ErrorConfPass(formValue.confirmPassword)){
+        error["ConfirmPassword"] = "Confirm Password must be the same with the password"
+        
+      }
+      setformError(error)
+      return Object.keys(error).length===0
+
+  }
+  
+
+  const handleChange = (event) => {
+    const {value, name} = event.target;
+    setformValue({
+      ...formValue,
+      [name]: value,
+    });
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (validateForm()){
+      
+      console.log(formValue); 
+  } else {
+    console.log(formerror);
+  }
+}
+
+  
+
   return (
     <>
       <Header />
@@ -57,7 +125,7 @@ function CreateAccount() {
           >
             Create Account
           </Typography>
-          <form noValidate>
+          <form onSubmit={handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -66,6 +134,8 @@ function CreateAccount() {
               id="name"
               label="Name"
               name="name"
+              value={formValue.name}
+              onChange={handleChange}
               autoComplete="name"
               autoFocus
               sx={{ marginBottom: '10px' }}
@@ -78,6 +148,8 @@ function CreateAccount() {
               id="email"
               label="Email Address"
               name="email"
+              value={formValue.email}
+              onChange={handleChange}
               autoComplete="email"
               sx={{ marginBottom: '10px' }}
             />
@@ -89,6 +161,8 @@ function CreateAccount() {
               id="address"
               label="Address"
               name="address"
+              value={formValue.address}
+              onChange={handleChange}
               autoComplete="address"
               sx={{ marginBottom: '10px' }}
             />
@@ -100,6 +174,8 @@ function CreateAccount() {
               id="phoneNumber"
               label="Phone Number"
               name="phoneNumber"
+              value={formValue.phoneNumber}
+              onChange={handleChange}
               autoComplete="tel"
               sx={{ marginBottom: '10px' }}
             />
@@ -111,6 +187,8 @@ function CreateAccount() {
               id="dob"
               label="Date of Birth"
               name="dob"
+              value={formValue.dob}
+              onChange={handleChange}
               type="date"
               InputLabelProps={{ shrink: true }}
               sx={{ marginBottom: '10px' }}
@@ -123,7 +201,8 @@ function CreateAccount() {
               id="username"
               label="Username"
               name="username"
-              autoComplete="username"
+              value={formValue.username}
+              onChange={handleChange}
               autoFocus
               sx={{ marginBottom: '10px' }}
             />
@@ -136,6 +215,8 @@ function CreateAccount() {
               label="Password"
               type="password"
               id="password"
+              value={formValue.password}
+              onChange={handleChange}
               autoComplete="new-password"
               sx={{ marginBottom: '10px' }}
             />
@@ -147,6 +228,8 @@ function CreateAccount() {
               name="confirmPassword"
               label="Confirm Password"
               type="password"
+              value={formValue.confirmPassword}
+              onChange={handleChange}
               id="confirmPassword"
               autoComplete="new-password"
               sx={{ marginBottom: '10px' }}
@@ -155,8 +238,6 @@ function CreateAccount() {
               type="submit"
               fullWidth
               variant="contained"
-              component={RouterLink} 
-              to="/login" 
               sx={{
                 backgroundColor: '#333',
                 color: '#fff',
@@ -175,7 +256,7 @@ function CreateAccount() {
               }}
             >
               Already have an account?{' '}
-              <Link href="/login" sx={{ textDecoration: 'none', color: '#333' }}>
+              <Link to="/login" sx={{ textDecoration: 'none', color: '#333' }}>
                 Login
               </Link>
             </Typography>
