@@ -14,13 +14,17 @@ public class productController {
         this.productService = productService;
     }
 
-    @GetMapping(path = "/products")
+    @GetMapping(path = "/")
     public List<Product> getProducts() {
         return productService.getProduct();
     }
 
+    @GetMapping(path = "/{id}")
+    public Product getProduct(@PathVariable Long id) {
+        return productService.findProductById(id);
+    }
     @PostMapping(path = "/add")
-    public Product addNewProduct(@RequestBody Product product){;
+    public Product addNewProduct(@RequestBody Product product){
         return productService.addNewProduct(product);
     }
 
