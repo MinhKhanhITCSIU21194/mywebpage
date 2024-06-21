@@ -5,7 +5,7 @@ import Header from '../Components/Header';
 import Section from '../Components/Section';
 import Lowbar from '../Components/Lowbar';
 import AppPagination from '../Components/PaginationButton';
-import Addtocart from '../Components/Addtocart';
+import Addtocart from '../Components/Products/Addtocart';
 import { PRODUCTS } from '../../data/Data';
 
 

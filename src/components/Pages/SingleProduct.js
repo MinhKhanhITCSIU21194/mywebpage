@@ -5,7 +5,7 @@ import { Container, Typography } from '@mui/material'
 import { PRODUCTS } from '../../data/Data'
 import { useParams } from 'react-router-dom'
 
-import Addtocart from '../Components/Addtocart'
+import Addtocart from '../Components/Products/Addtocart'
 
 
 function SingleProduct() {
