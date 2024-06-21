@@ -8,8 +8,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useSelector } from 'react-redux'
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+
+
+
 
 export default function Cart() {
+
   const Cart = useSelector(state => state.cart.CartArr)
   return (
     <div>
@@ -38,7 +45,17 @@ export default function Cart() {
       )}
     </table>
       
-      
+      <Button 
+          variant="contained" 
+          color="primary"
+          component={Link}
+          to={'/Checkout'}
+          style={{
+            margin:'10px',
+            width:'15%',
+            marginLeft:'70.5%', 
+            
+            }}>Checkout</Button>
       <Lowbar/>
     </div>
   )

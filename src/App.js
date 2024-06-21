@@ -10,6 +10,7 @@ import SingleProduct from './components/Pages/SingleProduct';
 import Cart from './components/Pages/Cart';
 import Login from "./components/Pages/Login";
 import CreateAccount from "./components/Pages/CreateAccount"
+import Checkout from "./components/Pages/Checkout"
 function App() {
   return (
 <div>
@@ -27,7 +28,8 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path="/products/:id" element={<SingleProduct />}/>
       <Route path="/login" element={<Login/>}/> 
-        <Route path="/create-account" element={<CreateAccount/>}/>
+      <Route path="/create-account" element={<CreateAccount/>}/>
+      <Route path="/Checkout" element={<Checkout/>}/>
 
       
     </Routes>
