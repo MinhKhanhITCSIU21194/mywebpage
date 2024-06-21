@@ -33,7 +33,7 @@ public class CustomerController {
         customerService.deleteCustomer(id);
     }
 
-    @PutMapping(path = "/{id}")
+    @PutMapping(path = "/update/{id}")
     public Customer updateCustomer(@PathVariable("id") Long customerId, @RequestBody Customer customer) {
         return customerService.updateCustomer(customerId, customer);
     }

@@ -36,7 +36,7 @@ public class CustomerService {
         updatedCustomer.get().setCustomerAddress(customer.getCustomerAddress());
         updatedCustomer.get().setCustomerDateOfBirth(customer.getCustomerDateOfBirth());
         updatedCustomer.get().setCustomerPhoneNumber(customer.getCustomerPhoneNumber());
-        return customerRepository.save(customer);
+        return customerRepository.save(updatedCustomer.get());
     }
 
     public void deleteCustomer(Long id) {
@@ -45,5 +45,8 @@ public class CustomerService {
             throw new IllegalStateException("customer with id" + id + "doesn't exist");
         }
         customerRepository.deleteById(id);
+    }
+    public Customer findByCustomerName(String customerName) {
+        return customerRepository.findByCustomerName(customerName);
     }
 }

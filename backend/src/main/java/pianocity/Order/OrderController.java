@@ -23,8 +23,8 @@ public class OrderController {
         return orderService.findOrderByiD(OrderId);
     }
 
-    @PostMapping(path = "/add")
-    public Order addOrder(@RequestBody Order order) {
-        return orderService.addOrder(order);
+    @PostMapping(path = "/add/{userId}")
+    public Order addOrder(@PathVariable Long userId) {
+        return orderService.createOrder(userId);
     }
 }

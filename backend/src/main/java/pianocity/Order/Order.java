@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pianocity.Customer.Customer;
-
+import pianocity.OrderDetail.OrderDetail;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @Setter
@@ -25,7 +26,9 @@ public class Order {
     )
     private Long orderId;
 
-    private Long orderCost;
+    private int quantity;
+
+    private Double orderCost;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
@@ -33,4 +36,6 @@ public class Order {
 
     private Date orderDate;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    private List<OrderDetail> orderDetailList;
 }

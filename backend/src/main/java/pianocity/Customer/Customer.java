@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pianocity.Cart.Cart;
+import pianocity.Order.Order;
+import java.util.List;
 
 import java.util.Date;
 
@@ -27,4 +30,10 @@ public class Customer {
     private String customerPhoneNumber;
 
     private String customerAddress;
+
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    private Cart cart;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Order> orders;
 }
