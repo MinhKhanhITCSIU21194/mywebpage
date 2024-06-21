@@ -1,4 +1,5 @@
 package pianocity.Product;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,8 @@ public class productService {
         return productRepository.findProductByProductName(productName).get();
     }
 
-    public Product findProductByCategory(String category) {
-        return productRepository.findProductByProductCategory(category).get();
+    public List<Product> findProductByCategory(String category) {
+        return productRepository.findAllByCategory(category);
     }
 
     public Product addNewProduct(Product product){
@@ -51,7 +52,7 @@ public class productService {
 
         updatedProduct.get().setProductImage(product.getProductImage());
         updatedProduct.get().setProductName(product.getProductName());
-        updatedProduct.get().setProductCategory(product.getProductCategory());
+        updatedProduct.get().setCategory(product.getCategory());
         updatedProduct.get().setCost(product.getCost());
 
         return productRepository.save(updatedProduct.get());

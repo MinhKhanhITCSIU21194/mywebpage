@@ -1,51 +1,36 @@
 package pianocity.Order;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pianocity.User.User;
+import pianocity.Customer.Customer;
 
 import java.util.Date;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Setter
 @Getter
 @Entity
-@Table(name = "Order")
+@Table(name = "orders")
+@AllArgsConstructor
 public class Order {
     @Id
-    @SequenceGenerator(
-            name = "order_sequence",
-            sequenceName = "order_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "order_sequence"
+            strategy = GenerationType.IDENTITY
     )
     @Column(
-            name ="orderID",
+            name ="order_id",
             updatable = false
     )
-    private Long orderID;
+    private Long orderId;
 
-    @Column(
-            name = "orderCost",
-            nullable = false
-    )
     private Long orderCost;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "OrderUserID", referencedColumnName = "userID")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private User UserID;
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+    private Customer customer;
 
-    @Column(
-            name = "orderDate",
-            nullable = false
-    )
     private Date orderDate;
+
 }
