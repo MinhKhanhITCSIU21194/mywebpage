@@ -11,8 +11,8 @@ public class productConfig {
     @Bean
     CommandLineRunner productCommandLineRunner(productRepository productRepository) {
         return args -> {
-            Product product1 = new Product("hjhj",200L,"dan","");
-            productRepository.saveAll(List.of(product1));
+//            Product product1 = new Product("hjhj",200L,"dan","");
+//            productRepository.saveAll(List.of(product1));
         };
     }
 }

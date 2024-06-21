@@ -23,6 +23,10 @@ public class productController {
     public Product getProduct(@PathVariable Long id) {
         return productService.findProductById(id);
     }
+    @GetMapping(path = "/{category}")
+    public List<Product> getProductsByCategory(@PathVariable String category) {
+        return productService.findProductByCategory(category);
+    }
     @PostMapping(path = "/add")
     public Product addNewProduct(@RequestBody Product product){
         return productService.addNewProduct(product);

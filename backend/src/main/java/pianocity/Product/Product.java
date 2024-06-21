@@ -1,6 +1,7 @@
 package pianocity.Product;
 import jakarta.persistence.*;
 import lombok.*;
+import pianocity.Category.Category;
 
 @Setter
 @Getter
@@ -20,15 +21,11 @@ public class Product {
 
     private Long cost;
 
-    private String productCategory;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    private Category category;
 
     private String productImage;
 
-    public Product(String productName, Long cost, String productCategory, String productImage) {
-        this.productName = productName;
-        this.cost = cost;
-        this.productCategory = productCategory;
-        this.productImage = productImage;
-    }
 
 }

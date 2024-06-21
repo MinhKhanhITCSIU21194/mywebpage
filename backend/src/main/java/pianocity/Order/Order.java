@@ -20,7 +20,7 @@ public class Order {
             strategy = GenerationType.IDENTITY
     )
     @Column(
-            name ="orderId",
+            name ="order_id",
             updatable = false
     )
     private Long orderId;
