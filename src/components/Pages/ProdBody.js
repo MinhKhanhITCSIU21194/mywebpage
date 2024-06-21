@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, Container, TextField, Typography, RadioGroup,FormControlLabel,Radio } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
@@ -7,45 +7,40 @@ import Lowbar from '../Components/Lowbar';
 import AppPagination from '../Components/PaginationButton';
 import Addtocart from '../Components/Addtocart';
 import { PRODUCTS } from '../../data/Data';
-import { Category } from '@mui/icons-material';
 
 
 
-function ProdBody() {
+const ProdBody = () => {
+  const [products, setProducts] = useState([PRODUCTS]); // Initialize with actual products data
+  const [filteredProducts, setFilteredProducts] = useState([PRODUCTS]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedPriceRange, setSelectedPriceRange] = useState('');
+
+  useEffect(() => {
+    filterProducts();
+  }, [products, selectedCategory, selectedPriceRange]); // Add products to dependency array if PRODUCTS can change
+
+  const handleChangeCategory = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const handleChangePriceRange = (event) => {
+    setSelectedPriceRange(event.target.value);
+  };
+
+  const filterProducts = () => {
+    let tempProducts = products;
+
+    if (selectedCategory) {
+      // Ensure property name matches. Example: 'category'
+      tempProducts = tempProducts.filter(product => product.Category === selectedCategory);
+    }
+
+    // Implement price range filtering logic here...
+
+    setFilteredProducts(tempProducts);
   
-const [products, setProducts] = useState([]);
-const [selectedCategory, setSelectedCategory] = useState(null);
-// -----------inputFilter ------------
-const [query, setQuery] = useState('');
-const handleInputChange = (e) => {
-  setQuery(e.target.value);
-}
-const filteredItems = PRODUCTS.filter((PRODUCTS=>PRODUCTS.Name.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()!== -1)));
-// -----------inputFilter ------------
-
-//-----------------RadioFilter----------------
-
-const handleChange= (e) => {
-  setSelectedCategory(e.target.value);
-}
-
-
-}
-//-----------------RadioFilter----------------
-
-const handleClick = event => {
-  setSelectedCategory(event.target.value);
-}
-function filterdData(products, selected, query) {
-  let filteredProducts = products;
-  if (query) {
-    filteredProducts = filteredItems;
-  }
-  if (selected) {
-    filteredProducts = filteredProducts.filter((product) => product.Category === selected || product.Price === selected);
-  }
-}
-
+  };
   return (
     <div>
       <Header/>
@@ -66,24 +61,24 @@ function filterdData(products, selected, query) {
                 name="controlled-radio-buttons-group"
                 sx={{marginBottom:'10%'}}
                 // value={value}
-                onChange={handleChange}
+                onChange={handleChangeCategory}
               >
-                <FormControlLabel value="1" control={<Radio />} label="Piano" />
-                <FormControlLabel value="2" control={<Radio />} label="Keyboard" />
-                <FormControlLabel value="3" control={<Radio />} label="Equipments" />
+                <FormControlLabel value="Piano" control={<Radio />} label="Piano" handleChangeCategory={handleChangeCategory}/>
+                <FormControlLabel value="Keyboard" control={<Radio />} label="Keyboard" handleChangeCategory={handleChangeCategory}/>
+                <FormControlLabel value="Equipments" control={<Radio />} label="Equipments" handleChangeCategory={handleChangeCategory}/>
               </RadioGroup>
               <Typography sx={{fontSize:'20px', fontWeight:'700', textAlign:'center'}}>Price</Typography>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 // value={value}
-                onChange={handleChange}
+                onChange={handleChangePriceRange}
               >
-                <FormControlLabel value="1" control={<Radio />} label="All" />
-                <FormControlLabel value="1" control={<Radio />} label="100-200$" />
-                <FormControlLabel value="2" control={<Radio />} label="200-500$" />
-                <FormControlLabel value="3" control={<Radio />} label="500-1000$" />
-                <FormControlLabel value="3" control={<Radio />} label="Over 1000$" />
+                <FormControlLabel value="0" control={<Radio />} label="All" handleChangePriceRange={handleChangePriceRange} />
+                <FormControlLabel value="1" control={<Radio />} label="100-200$" handleChangePriceRange={handleChangePriceRange}/>
+                <FormControlLabel value="2" control={<Radio />} label="200-500$" handleChangePriceRange={handleChangePriceRange}/>
+                <FormControlLabel value="3" control={<Radio />} label="500-1000$" handleChangePriceRange={handleChangePriceRange}/>
+                <FormControlLabel value="4" control={<Radio />} label="Over 1000$" handleChangePriceRange={handleChangePriceRange}/>
               </RadioGroup>
 
           </Container>
@@ -94,13 +89,13 @@ function filterdData(products, selected, query) {
 
     {/* This is for products */}
       <div class="products" style={{display: 'flex', flexWrap: 'wrap', width:'80%', }} > 
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
             <span class="item" style={{width:'31%', margin:'10px'}}>
                 <Button
                 component={Link}
                 to={`/products/${product.id}`}
                 sx={{height:'70%'}}
-                ><img src={product.img} alt="Product" className="ProductImage" style={{width:'100%'}} /></Button>
+                ><img src={product.img} alt="product" className="productImage" style={{width:'100%'}} /></Button>
                 <div class="item-info" style={{textAlign:'center', height:'30%'}}>
                     <h2>{product.Name}</h2>
                     <h3>${product.Price}</h3>
@@ -108,10 +103,13 @@ function filterdData(products, selected, query) {
                 </div>
             </span>
         ))}
+        
+        
         </div>
+        
       {/* This is for products */}
     </Box>  
-        <AppPagination setProducts={(p) => setProducts(p)}/>
+    <AppPagination setProducts={(p) => setProducts(p)}/>
         <Lowbar/>
         
     </div>
