@@ -62,6 +62,7 @@ public class CartService {
                 cartProduct.setQuantity(quantity);
                 cartProduct.setUnitPrice(unitPrice);
                 cartProduct.setCart(cart);
+                cartProduct.setProduct(product);
                 cartProductList.add(cartProduct);
                 cartProductRepository.save(cartProduct);
             } else {
@@ -226,6 +227,8 @@ public class CartService {
             return null;
         }
         for (CartProduct item : cartProducts) {
+            if(item.getProduct() == null)
+                continue;
             if (item.getProduct().getId().equals(productId)) {
                 return item;
             }
