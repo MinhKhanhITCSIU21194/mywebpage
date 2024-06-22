@@ -64,12 +64,13 @@ const Checkout = () => {
                       margin="normal"
                       required
                       fullWidth
-                      id="Holder"
+                      type = "text"
+                      id="cardHolder"
                       label="Full Name"
-                      name="Holder"
+                      name="cardHolder"
                       value={cardDetails.cardHolder}
                       onChange={handleChange}
-                      autoComplete="name"
+               
                       autoFocus
                       sx={{ marginBottom: '10px' }} />
                   <TextField
@@ -77,12 +78,12 @@ const Checkout = () => {
                       margin="normal"
                       required
                       fullWidth
-                      id="Number"
+                      id="cardNumber"
                       label="Card Number"
-                      name="Number"
+                      name="cardNumber"
                       value={cardDetails.cardNumber}
                       onChange={handleChange}
-                      autoComplete="email"
+                   
                       sx={{ marginBottom: '10px' }} />
                   <TextField
                       variant="outlined"
@@ -94,20 +95,20 @@ const Checkout = () => {
                       name="cvv"
                       value={cardDetails.cvv}
                       onChange={handleChange}
-                      autoComplete="cvv"
+                   
                       sx={{ marginBottom: '10px' }} />
                 <TextField
                       variant="outlined"
                       margin="normal"
                       required
                       fullWidth
-                      id="ExpiryDate"
+                      id="expiryDate"
                       label="Expiry Date"
-                      name="ExpiryDate"
+                      name="expiryDate"
                       value={cardDetails.expiryDate}
                       onChange={handleChange}
                       type="date"
-                      InputLabelProps={{ shrink: true }}
+                     
                       sx={{ marginBottom: '10px' }} />
                 <TextField
                         variant="outlined"

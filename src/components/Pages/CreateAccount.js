@@ -236,6 +236,7 @@ function CreateAccount() {
             />
             <Button
               type="submit"
+              to="/login"
               fullWidth
               variant="contained"
               sx={{
@@ -256,7 +257,7 @@ function CreateAccount() {
               }}
             >
               Already have an account?{' '}
-              <Link to="/login" sx={{ textDecoration: 'none', color: '#333' }}>
+              <Link href="/login" sx={{ textDecoration: 'none', color: '#333' }}>
                 Login
               </Link>
             </Typography>
