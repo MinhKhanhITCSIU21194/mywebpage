@@ -4,7 +4,14 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button } from '@mui/material';
 import {PRODUCTS} from '../../data/Data'
 import CourseimageButton from '../Components/CourseimageButton';
+
+var ProductAPI ='http://localhost:8090/product/'
+
+
 function Body() {
+  getProducts(function(data) {
+    PRODUCTS.push(data);
+  });
   const productsRef = React.useRef(null);
   const EduRef = React.useRef(null);
   function scrolldiv() {
@@ -143,6 +150,13 @@ function Body() {
       </div>
     </div> 
   )
+}
+function getProducts(callback) {
+    fetch(ProductAPI)
+      .then(function(response) {
+          return response.json();
+})
+      .then(callback);
 }
 
 export default Body
