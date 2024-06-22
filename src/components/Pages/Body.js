@@ -10,7 +10,7 @@ var ProductAPI ='http://localhost:8090/product/'
 
 
 function Body() {
-  // getProducts(renderProducts);
+  getProducts(renderProducts);
   const productsRef = React.useRef(null);
   const EduRef = React.useRef(null);
   function scrolldiv() {

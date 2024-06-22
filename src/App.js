@@ -11,6 +11,8 @@ import Cart from './components/Pages/Cart';
 import Login from "./components/Pages/Login";
 import CreateAccount from "./components/Pages/CreateAccount"
 import Checkout from "./components/Pages/Checkout"
+
+import Homepage2 from './components/Pages/Homepage2';
 function App() {
   return (
 <div>
@@ -30,6 +32,7 @@ function App() {
       <Route path="/login" element={<Login/>}/> 
       <Route path="/create-account" element={<CreateAccount/>}/>
       <Route path="/Checkout" element={<Checkout/>}/>
+      <Route path="/Homepage" element={<Homepage2/>}/>
 
       
     </Routes>

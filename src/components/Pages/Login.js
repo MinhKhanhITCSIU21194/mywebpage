@@ -3,8 +3,6 @@ import { Typography, TextField, Button, Container, Link, Box } from '@mui/materi
 import Header from '../Components/Header';
 
 function Login() {
-
-
   
   return (
     <>
@@ -67,7 +65,9 @@ function Login() {
               required
               fullWidth
               id="username"
+         
               label="Username"
+            
               name="username"
               autoComplete="username"
               autoFocus
@@ -80,6 +80,8 @@ function Login() {
               fullWidth
               name="password"
               label="Password"
+            
+           
               type="password"
               id="password"
               autoComplete="current-password"
@@ -99,7 +101,7 @@ function Login() {
             </Typography>
             <Button
               type="submit"
-              href='/'
+              href='/Homepage'
               fullWidth
               variant="contained"
               sx={{
