@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Header from '../Components/Header';
 import Lowbar from '../Components/Lowbar';
-import { Button, Container, TableCell, TableRow, TextField, Box, Typography, Table, TableBody} from '@mui/material';
+import { Button, TableCell, TableRow, TextField, Box, Typography, Table, TableBody} from '@mui/material';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Checkout = () => {
     let total = 0;
@@ -27,7 +28,7 @@ const Checkout = () => {
     e.preventDefault();
     // Add your payment processing logic here
     console.log(cardDetails);
-    alert('Payment Successful!');
+     alert('Payment Successful!');
   };
 
   return (
@@ -108,7 +109,6 @@ const Checkout = () => {
                       value={cardDetails.expiryDate}
                       onChange={handleChange}
                       type="date"
-                     
                       sx={{ marginBottom: '10px' }} />
                 <TextField
                         variant="outlined"
