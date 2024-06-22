@@ -1,5 +1,6 @@
 package pianocity.Customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,8 +15,8 @@ import java.util.Date;
 @Setter
 @Getter
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "customer")
 public class Customer {
     @Id
@@ -31,9 +32,27 @@ public class Customer {
 
     private String customerAddress;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL)
     private Cart cart;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer")
     private List<Order> orders;
+
+
+    public Customer(String customerName, Date customerDateOfBirth, String customerPhoneNumber, String customerAddress) {
+        this.customerName = customerName;
+        this.customerDateOfBirth = customerDateOfBirth;
+        this.customerPhoneNumber = customerPhoneNumber;
+        this.customerAddress = customerAddress;
+    }
+
+    @Override
+    public String toString(){
+        return "Customer{"+
+                "CustomerId = " + id +
+                ", CustomerName = " + customerName +
+                ",phoneNum =" + customerPhoneNumber +
+                ", address = " + customerAddress +
+                "}";
+    }
 }

@@ -11,9 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import pianocity.Product.productRepository;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class CartService {
@@ -32,16 +30,15 @@ public class CartService {
         this.productRepository = productRepository;
     }
 
-    @Transactional
     public Cart addItemToCart(Long productId, int quantity,Long customerId) {
         Customer customer = customerService.getCustomerById(customerId);
         Cart cart = customer.getCart();
 
-//        if (cart == null) {
-//            cart = new Cart();
-//        }
+        if (cart == null) {
+            cart = new Cart();
+        }
 
-        Set<CartProduct> cartProductList = cart.getCartProducts();
+        List<CartProduct> cartProductList = cart.getCartProducts();
         CartProduct cartProduct = find(cartProductList, productId);
         Product product = productRepository.findProductById(productId);
         double unitPrice = product.getCost();
@@ -49,7 +46,7 @@ public class CartService {
         int itemQuantity;
 
         if (cartProductList == null) {
-            cartProductList = new HashSet<>();
+            cartProductList = new ArrayList<>();
             cartProduct = new CartProduct();
             cartProduct.setProduct(product);
             cartProduct.setCart(cart);
@@ -81,7 +78,7 @@ public class CartService {
         cart.setTotalPrice(totalPrice);
         cart.setTotalItems(totalItem);
         cart.setCustomer(customer);
-
+        customer.setCart(cart);
         return cartRepository.save(cart);
     }
     public Cart findCartByCustomerId(Long customerId){
@@ -95,7 +92,7 @@ public class CartService {
 
         Cart Cart = customer.getCart();
 
-        Set<CartProduct> CartProductList = Cart.getCartProducts();
+        List<CartProduct> CartProductList = Cart.getCartProducts();
         CartProduct item = find(CartProductList, product.getId());
 
         item.setQuantity(quantity);
@@ -117,7 +114,7 @@ public class CartService {
         Product product = productRepository.findProductById(productId);
 
         Cart Cart = customer.getCart();
-        Set<CartProduct> CartProductList = Cart.getCartProducts();
+        List<CartProduct> CartProductList = Cart.getCartProducts();
         CartProduct item = find(CartProductList, product.getId());
 
         CartProductList.remove(item);
@@ -135,11 +132,11 @@ public class CartService {
     public Cart addItemToCartSession(Cart cart, Product product, int quantity) {
         CartProduct cartProduct = findIn(cart, product.getId());
 
-        Set<CartProduct> cartProductList = cart.getCartProducts();
+        List<CartProduct> cartProductList = cart.getCartProducts();
         double unitPrice = product.getCost();
         int itemQuantity;
         if (cartProductList == null) {
-            cartProductList = new HashSet<>();
+                cartProductList = new ArrayList<>();
                 cartProduct = new CartProduct();
                 cartProduct.setProduct(product);
                 cartProduct.setCart(cart);
@@ -178,7 +175,7 @@ public class CartService {
     }
 
     public Cart updateCartSession(Cart cart, Product product, int quantity) {
-        Set<CartProduct> CartProductList = cart.getCartProducts();
+        List<CartProduct> CartProductList = cart.getCartProducts();
         CartProduct item = findIn(cart, product.getId());
         int itemQuantity = item.getQuantity() + quantity;
         int totalItem = totalItem(CartProductList);
@@ -192,7 +189,7 @@ public class CartService {
     }
 
     public Cart removeItemFromCartSession(Cart cart, Product product, int quantity) {
-        Set<CartProduct> cartProductList = cart.getCartProducts();
+        List<CartProduct> cartProductList = cart.getCartProducts();
         CartProduct item = findIn(cart, product.getId());
         cartProductList.remove(item);
 
@@ -224,15 +221,13 @@ public class CartService {
 //        Cart cart = customer.getCart();
 //        return cart;
 //    }
-    private CartProduct find(Set<CartProduct> cartProducts, Long productId) {
+    private CartProduct find(List<CartProduct> cartProducts, Long productId) {
         if (cartProducts == null) {
             return null;
         }
-        CartProduct cartProduct = null;
         for (CartProduct item : cartProducts) {
-            if (item.getProduct().getId() == productId) {
-                cartProduct = item;
-                return cartProduct;
+            if (item.getProduct().getId().equals(productId)) {
+                return item;
             }
         }
         return null;
@@ -251,7 +246,7 @@ public class CartService {
         return CartProduct;
     }
 
-    private int totalItem(Set<CartProduct> CartProductList) {
+    private int totalItem(List<CartProduct> CartProductList) {
         int totalItem = 0;
         for (CartProduct item : CartProductList) {
             totalItem += item.getQuantity();
@@ -259,7 +254,7 @@ public class CartService {
         return totalItem;
     }
 
-    private double totalPrice(Set<CartProduct> CartProductList) {
+    private double totalPrice(List<CartProduct> CartProductList) {
         double totalPrice = 0.0;
         for (CartProduct item : CartProductList) {
             totalPrice += item.getUnitPrice() * item.getQuantity();

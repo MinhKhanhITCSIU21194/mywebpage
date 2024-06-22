@@ -2,16 +2,17 @@ package pianocity.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import pianocity.Category.CategoryRepository;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class productService {
     private final productRepository productRepository;
-
+    private final CategoryRepository categoryRepository;
     @Autowired
-    public productService(productRepository productRepository) {
+    public productService(productRepository productRepository,CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
     }
 
@@ -29,6 +30,7 @@ public class productService {
     }
 
     public List<Product> findProductByCategory(String category) {
+
         return productRepository.findAllByCategory(category);
     }
 

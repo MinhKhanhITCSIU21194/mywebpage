@@ -23,8 +23,8 @@ public class productController {
     public Product getProduct(@PathVariable Long id) {
         return productService.findProductById(id);
     }
-    @GetMapping(path = "/{category}")
-    public List<Product> getProductsByCategory(@PathVariable String category) {
+    @GetMapping(path = "/category")
+    public List<Product> getProductsByCategory(@RequestParam String category) {
         return productService.findProductByCategory(category);
     }
     @PostMapping(path = "/add")
@@ -37,7 +37,7 @@ public class productController {
         productService.deleteProduct(productId);
     }
 
-    @PutMapping(path = "/{productID}")
+    @PutMapping(path = "/update/{productID}")
     public Product updateProduct(@PathVariable("productID") Long productId, @RequestBody Product product){
         return productService.updateProduct(productId, product);
     }

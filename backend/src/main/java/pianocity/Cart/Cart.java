@@ -1,13 +1,14 @@
 package pianocity.Cart;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import pianocity.CartProduct.CartProduct;
 import pianocity.Customer.Customer;
-
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -21,21 +22,36 @@ public class Cart {
     @Column(name = "cart_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+    @JsonIgnore
     private Customer customer;
 
     private double totalPrice;
 
     private int totalItems;
 
-    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "cart")
-    private Set<CartProduct> cartProducts;
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
+    private List<CartProduct> cartProducts;
 
     public Cart() {
-        this.cartProducts = new HashSet<>();
         this.totalItems = 0;
         this.totalPrice = 0.0;
+    }
+
+
+    public Long getCustomer() {
+        return customer.getId();
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id:" + id +
+                ", customerId:" + customer.getId() +
+                ", quantity:" + totalItems +
+                ", totalPrice:" + totalPrice +
+                '}';
     }
 
 }

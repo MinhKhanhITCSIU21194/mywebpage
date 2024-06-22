@@ -28,7 +28,7 @@ public class CartController {
         return cartService.addItemToCart(productId,1,userId);
     }
 
-    @PutMapping(path = "/{userId}/delete")
+    @DeleteMapping(path = "/{userId}/delete")
     public Cart deleteItemFromCart(@PathVariable("userId") Long id,
                            @RequestParam("productId") Long productId) {
         return cartService.removeItemFromCart(productId,id);
@@ -41,7 +41,7 @@ public class CartController {
         return cartService.updateCart(productId,quantity,id);
     }
 
-    @DeleteMapping(path = "/{userId}/delete")
+    @DeleteMapping(path = "/{userId}/deleteAll")
     public void deleteCart(@PathVariable("userId") Long userId) {
         cartService.deleteCartById(userId);
     }
