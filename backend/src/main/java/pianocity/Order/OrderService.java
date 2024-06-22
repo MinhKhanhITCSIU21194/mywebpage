@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pianocity.Cart.Cart;
 import pianocity.Cart.CartService;
 import pianocity.CartProduct.CartProduct;
+import pianocity.Customer.CustomerRepository;
 import pianocity.OrderDetail.OrderDetail;
 import pianocity.OrderDetail.OrderDetailRepository;
 
@@ -16,12 +17,14 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderDetailRepository orderDetailRepository;
     private final CartService cartService;
+    private final CustomerRepository customerRepository;
     @Autowired
     public OrderService(OrderRepository orderRepository,OrderDetailRepository orderDetailRepository,
-                        CartService cartService){
+                        CartService cartService, CustomerRepository customerRepository){
         this.orderRepository = orderRepository;
         this.orderDetailRepository = orderDetailRepository;
         this.cartService = cartService;
+        this.customerRepository = customerRepository;
     }
 
     public List<Order> getAllOrders(){
@@ -46,7 +49,8 @@ public class OrderService {
         Order order = new Order();
         order.setOrderDate(new Date());
 
-        order.setCustomer(cart.getCustomer());
+        order.setCustomer(customerRepository.findById(customerId).get());
+
         order.setOrderCost(cart.getTotalPrice());
         order.setQuantity(cart.getTotalItems());
         List<OrderDetail> orderDetailList = new ArrayList<>();
