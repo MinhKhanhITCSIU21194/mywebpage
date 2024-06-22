@@ -36,7 +36,24 @@ const ProdBody = () => {
       tempProducts = tempProducts.filter(product => product.Category === selectedCategory);
     }
 
-    // Implement price range filtering logic here...
+    if (selectedPriceRange) {
+      switch (selectedPriceRange) {
+        case '1':
+          tempProducts = tempProducts.filter(product => product.Price >= 100 && product.Price <= 200);
+          break;
+        case '2':
+          tempProducts = tempProducts.filter(product => product.Price >= 200 && product.Price <= 500);
+          break;
+        case '3':
+          tempProducts = tempProducts.filter(product => product.Price >= 500 && product.Price <= 1000);
+          break;
+        case '4':
+          tempProducts = tempProducts.filter(product => product.Price > 1000);
+          break;
+        default:
+          break;
+      }
+    }
 
     setFilteredProducts(tempProducts);
   

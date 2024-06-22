@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button } from '@mui/material';
@@ -9,7 +10,7 @@ var ProductAPI ='http://localhost:8090/product/'
 
 
 function Body() {
-  getProducts(renderProducts);
+  // getProducts(renderProducts);
   const productsRef = React.useRef(null);
   const EduRef = React.useRef(null);
   function scrolldiv() {
@@ -97,7 +98,7 @@ function Body() {
     <div class="products" style={{display: 'flex', flexWrap: 'wrap', width:'100%', marginLeft:'30px'}} > 
         {PRODUCTS.slice(1,4).map((product) => (
             <span class="item" style={{width:'31%', margin:'10px'}}>
-                <Button><img src={product.img} alt="Product" className="ProductImage" style={{width:'100%'}} /></Button>
+                <Button component={Link} to={`/products/${product.id}`} ><img src={product.img} alt="Product" className="ProductImage" style={{width:'100%'}} /></Button>
                 <div class="item-info" style={{textAlign:'center'}}>
                     <h2>{product.Name}</h2>
                     <h3>${product.Price}</h3>
@@ -162,10 +163,7 @@ function getProducts(callback) {
 }
 function renderProducts() {
   PRODUCTS.map((product) => (
-    <div key={product.id}>
-      <h2>{product.Name}</h2>
-      <p>{product.Description}</p>
-    </div>
+    console.log(product)
   ));
 }
 

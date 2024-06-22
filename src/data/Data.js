@@ -338,7 +338,7 @@ export const PRODUCTS = [
         img3: "Assets/Equipments/action-m512a-450x471.png",
         img4:"Assets/Equipments/action-m512a-450x471.png" ,
         Description: "Action-M512A is a speaker that suits all kinds of music. It has a great sound quality and is easy to use.",
-    }
+    },
 
     
 ]

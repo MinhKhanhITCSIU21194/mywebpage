@@ -3,6 +3,9 @@ import { Typography, TextField, Button, Container, Link, Box } from '@mui/materi
 import Header from '../Components/Header';
 
 function Login() {
+
+
+  
   return (
     <>
       <Header />
@@ -96,6 +99,7 @@ function Login() {
             </Typography>
             <Button
               type="submit"
+              href='/'
               fullWidth
               variant="contained"
               sx={{
