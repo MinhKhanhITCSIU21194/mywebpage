@@ -9,9 +9,7 @@ var ProductAPI ='http://localhost:8090/product/'
 
 
 function Body() {
-  getProducts(function(data) {
-    PRODUCTS.push(data);
-  });
+  getProducts(renderProducts);
   const productsRef = React.useRef(null);
   const EduRef = React.useRef(null);
   function scrolldiv() {
@@ -152,11 +150,23 @@ function Body() {
   )
 }
 function getProducts(callback) {
-    fetch(ProductAPI)
-      .then(function(response) {
-          return response.json();
-})
-      .then(callback);
+  fetch(ProductAPI)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        // Assuming data is an array of product objects
+        PRODUCTS = [...PRODUCTS, ...data]; // Append data to PRODUCTS array
+        if (callback) callback(data); // Execute callback if provided
+    });
+}
+function renderProducts() {
+  PRODUCTS.map((product) => (
+    <div key={product.id}>
+      <h2>{product.Name}</h2>
+      <p>{product.Description}</p>
+    </div>
+  ));
 }
 
 export default Body
